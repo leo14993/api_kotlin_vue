@@ -1,16 +1,17 @@
 <template>
 
-
   <div class="corpo">
     <h1 class="centralizado"> {{ titulo }} </h1>
+    <label>
+      <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="filtro por parte do titulo">
 
+    </label>
+    {{ filtro }}
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotos">
-
-          <meu-painel :titulo="foto.titulo">
-            <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
-          </meu-painel>
-
+        <meu-painel :titulo="foto.titulo">
+          <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+        </meu-painel>
       </li>
     </ul>
 
@@ -30,6 +31,7 @@ export default {
     return {
       titulo: 'Meu titulo Vue',
       fotos: [],
+      filtro: '',
     };
   },
 
