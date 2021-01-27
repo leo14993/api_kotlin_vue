@@ -3,7 +3,7 @@
   <div class="corpo">
     <h1 class="centralizado"> {{ titulo }} </h1>
     <label>
-      <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="filtro por parte do titulo">
+      <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="filtro por parte do titulo">
 
     </label>
     {{ filtro }}
