@@ -3,8 +3,9 @@
   <div class="corpo">
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/cadastro">Cadastro</a></li>
+        <li v-for="route in routes">
+          <router-link :to="route.path ? route.path : '/' "> {{ route.titulo }} </router-link>
+        </li>
       </ul>
     </nav>
 
@@ -14,8 +15,15 @@
 
 <script>
 
+import { routes } from './routes';
+
 export default {
 
+  data() {
+    return {
+      routes
+    }
+  }
 
 }
 
