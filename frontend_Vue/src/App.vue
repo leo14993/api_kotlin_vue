@@ -1,6 +1,12 @@
 <template>
 
   <div class="corpo">
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/cadastro">Cadastro</a></li>
+      </ul>
+    </nav>
 
     <router-view></router-view>
   </div>
