@@ -6,7 +6,15 @@
 
 <script>
 export default {
-  props: ['tipo', 'rotulo']
+  props: ['tipo', 'rotulo', 'confirmacao'],
+
+  methods: {
+    disparaAcao() {
+      if(confirm('Confirma operacao?')) {
+        this.$emit('botaoAtivado','erro');
+      }
+    }
+  }
 
 }
 </script>
