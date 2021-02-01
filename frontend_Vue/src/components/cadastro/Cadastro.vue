@@ -34,7 +34,8 @@
 
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue'
 import Botao from '../shared/botao/Botao.vue';
-import Foto from '../../domain/foto/Foto'
+import Foto from '../../domain/foto/Foto';
+import FotoService from '../../domain/foto/FotoService';
 
 export default {
 
@@ -51,19 +52,16 @@ export default {
 
   methods: {
     grava() {
-      console.log(this.foto.titulo);
-      console.log(this.foto.url);
-      console.log(this.foto.descricao);
       console.log('enviar dados para a API');
-      this.resource
-        .save(this.foto)
+      this.service
+        .cadastra(this.foto)
         .then(() => this.foto = new Foto(), err => console.log(err));
     }
   },
 
   created() {
 
-    this.resource = this.$resource('v1/fotos');
+    this.service = new FotoService(this.$resource);
   }
 }
 
