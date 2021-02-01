@@ -2,7 +2,7 @@ export default class FotoService {
 
   constructor(resource){
 
-    this._resource = resource('v1/fotos{/id_da_foto}');
+    this._resource = resource('v1/fotos{/id}');
 
   }
   lista(){
@@ -18,7 +18,13 @@ export default class FotoService {
 
   }
 
-  apaga(id_da_foto) {
-    return this._resource.delete({ id_da_foto }); // { id_da_foto : id_da_foto } chave e valores iguais
+  apaga(id) {
+    return this._resource.delete({ id }); // { id : id } chave e valores iguais
+  }
+
+  busca(id) {
+    return this._resource
+      .get({ id })
+      .then(res => res.json());
   }
 }
