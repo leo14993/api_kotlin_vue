@@ -46,6 +46,7 @@ export default {
       titulo: 'Meu titulo Vue',
       fotos: [],
       filtro: '',
+      mensagem: ''
     };
   },
 
@@ -66,7 +67,7 @@ export default {
 
     remove(foto) {
         this.$http
-        .delete(`http://localhost:4000/v1/fotos/${foto._id}`)
+        .delete(`v1/fotos/${foto._id}`)
         .then(() => {
             // assim que apagar, exibe a mensagem para o usuário
             let indice = this.fotos.indexOf(foto);
@@ -82,7 +83,7 @@ export default {
 
   created() {
 
-    let url = 'http://localhost:4000/v1/fotos';
+    let url = 'v1/fotos';
     this.$http.get(url)
       .then(res => res.json())
       .then(fotos => this.fotos = fotos, err => console.log(err));

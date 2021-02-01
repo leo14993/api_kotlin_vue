@@ -56,7 +56,7 @@ export default {
       console.log(this.foto.descricao);
       console.log('enviar dados para a API');
       this.$http
-      .post('http://localhost:4000/v1/fotos', this.foto)
+      .post('v1/fotos', this.foto)
       .then(() => this.foto = new Foto(), err => console.log(err));
     }
   }
