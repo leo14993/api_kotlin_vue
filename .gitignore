@@ -1,2 +1,4 @@
-api
+api/node_modules
+api/data.db
 frontend_Vue/node_modules
+.idea

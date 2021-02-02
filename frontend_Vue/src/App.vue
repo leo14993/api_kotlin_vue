@@ -1,66 +1,48 @@
 <template>
-  <div id="app">
-    <!-- ul>li*2>img -->
-    <h1> {{ titulo }} </h1>
-    <ul>
-      <li v-for="foto of fotos">
-        <img :src="foto.url" :alt="foto.titulo">
-      </li>
-    </ul>
+
+  <div class="corpo">
+
+    <meu-menu :rotas="routes"/>
+
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
+
+import { routes } from './routes';
+import Menu from './components/shared/menu/Menu.vue';
+
 export default {
-  name: 'app',
-  data () {
+  components: {
+    'meu-menu' : Menu
+  },
+
+  data() {
     return {
-      titulo: 'Meu tiluto Vue',
-      fotos: [],
-    };
-  },
+      routes: routes.filter(route => route.menu)
+    }
+  }
 
-  created() {
-
-    alert('Crei o componente');
-    let url = 'http://localhost:4000/v1/fotos';
-    console.log("url aqui caralio");
-    console.log(url);
-    let promise = this.$http.get(url);
-    promise.then(res => {
-
-      res.json().then(fotos => this.fotos = fotos);
-    });
-  },
 }
 
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
+  .corpo{
+    font-family: Helvetica, sans-serif;
+    width: 96%;
+    margin: 0 auto;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  .pagina-enter, .pagina-leave-active {
+    opacity: 0;
+  }
+  .pagina-enter-active, .paginae-leave-active{
+    transition: opacity .5s ;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
