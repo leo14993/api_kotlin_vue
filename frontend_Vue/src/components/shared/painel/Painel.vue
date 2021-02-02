@@ -50,6 +50,9 @@ export default {
     margin: 0 0 15px 0;
     padding: 10px;
     text-transform: uppercase;
+    font-size: 100%;
+    font-weight: bolder;
+
   }
 
   * {
