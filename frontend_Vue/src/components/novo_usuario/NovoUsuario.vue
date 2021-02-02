@@ -30,6 +30,9 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
 
   data: function() {
@@ -43,7 +46,9 @@ export default {
   },
   methods: {
     enviarFormulario ()  {
-        console.log(this.usuario);
+        axios.post('http://localhost:8000/auth/register', this.usuario)
+          .then(resposta => console.log(resposta))
+          .catch(erro => console.log(erro))
     }
   }
 
