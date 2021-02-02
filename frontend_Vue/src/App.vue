@@ -1,6 +1,13 @@
 <template>
 
   <div class="corpo">
+    <li>
+      <a
+      href="#"
+      class="navbar-link"
+      @click.prevent="efeturarLogout"
+      >Logout</a>
+    </li>
 
     <meu-menu :rotas="routes"/>
 
@@ -23,6 +30,13 @@ export default {
   data() {
     return {
       routes: routes.filter(route => route.menu)
+    }
+  },
+
+  methods: {
+    efeturarLogout (){
+      localStorage.removeItem('token')
+      this.$router.push({ name: 'login' })
     }
   }
 

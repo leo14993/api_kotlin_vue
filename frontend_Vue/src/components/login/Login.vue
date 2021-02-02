@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Login</h1>
 
-      <form action="">
+      <form @submit.prevent="efetuarLogin">
 
         <div class="form-group">
           <label for="email">E-mail</label>
@@ -11,7 +11,7 @@
 
         <div class="form-group">
           <label for="senha">Senha</label>
-          <input type="password" class="form-control" v-model="usuario.password">
+          <input type="password" class="form-control" v-model="usuario.senha">
         </div>
 
         <button type="submit" class="btn btn-primary brn-block">
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -35,6 +37,20 @@ export default {
         email: '',
         password: ''
       }
+    }
+  },
+  methods: {
+    efetuarLogin () {
+      // alert(`usuario ${this.usuario.email} senha ${this.usuario.password} `)
+      axios.post('http://localhost:8000/auth/login', this.usuario)
+        .then(response =>{
+          console.log(response);
+          localStorage.setItem('token', response.data.access_token);
+          this.$router.push({ name: 'home' });
+          })
+
+        .catch(erro => console.log(erro))
+
     }
   }
 
