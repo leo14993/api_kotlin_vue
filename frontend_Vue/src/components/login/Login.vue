@@ -29,8 +29,7 @@
 
 <script>
 // import axios from 'axios'
-import http from '../../http'  // como o arquivo se chama index, só é preciso colocar o nome da pasta
-
+import users from '../../connection/users'  // como o arquivo se chama index, só é preciso colocar o nome da pasta
 
 
 export default {
@@ -45,7 +44,7 @@ export default {
   methods: {
     efetuarLogin () {
       // alert(`usuario ${this.usuario.email} senha ${this.usuario.password} `)
-      http.post('auth/login', this.usuario)
+      users.post('auth/login', this.usuario)
         .then(response =>{
           console.log(response);
           localStorage.setItem('token', response.data.access_token);
