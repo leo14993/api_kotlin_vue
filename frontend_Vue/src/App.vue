@@ -35,7 +35,7 @@ export default {
 
   methods: {
     efeturarLogout (){
-      localStorage.removeItem('token')
+      sessionStorage.removeItem('token')
       this.$router.push({ name: 'login' })
     }
   }
