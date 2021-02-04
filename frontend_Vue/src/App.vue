@@ -1,16 +1,11 @@
 <template>
 
   <div class="corpo">
-    <li>
-      <a
-      href="#"
-      class="navbar-link"
-      @click.prevent="efeturarLogout"
-      >Logout</a>
-    </li>
 
-    <meu-menu :rotas="routes"/>
 
+    <!-- <meu-menu :rotas="routes"/> -->
+    <Menu/>
+    
     <transition name="pagina">
       <router-view></router-view>
     </transition>
@@ -24,7 +19,7 @@ import Menu from './components/shared/menu/Menu.vue';
 
 export default {
   components: {
-    'meu-menu' : Menu
+    Menu
   },
 
   data() {
@@ -33,12 +28,7 @@ export default {
     }
   },
 
-  methods: {
-    efeturarLogout (){
-      sessionStorage.removeItem('token')
-      this.$router.push({ name: 'login' })
-    }
-  }
+
 
 }
 
@@ -58,5 +48,7 @@ export default {
   .pagina-enter-active, .paginae-leave-active{
     transition: opacity .5s ;
   }
+
+
 
 </style>
