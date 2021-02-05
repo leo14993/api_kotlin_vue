@@ -1,4 +1,5 @@
 import axios from 'axios'
+import provedor from '../../provedor'
 
 const users = axios.create({
   baseURL: 'http://localhost:8000/',
@@ -9,8 +10,7 @@ const users = axios.create({
 })
 
 users.interceptors.request.use(function (config) {
-  const token = sessionStorage.getItem('token');
-  console.log(token);
+  const token = provedor.state.token;
   if(token) {
     config.headers.Authorization = `Bearer ${token}`
   }

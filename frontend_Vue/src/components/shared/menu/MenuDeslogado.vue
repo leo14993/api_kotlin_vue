@@ -12,3 +12,9 @@
   </div>
 
 </template>
+
+<style scoped>
+  .nav-item {
+    margin: 15px;
+  }
+</style>

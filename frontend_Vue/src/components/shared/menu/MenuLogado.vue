@@ -25,10 +25,16 @@ export default {
 
   methods: {
     efetuarLogout (){
-      sessionStorage.removeItem('token')
+      this.$store.commit('DESLOGAR_USUARIO')
       this.$router.push({ name: 'login' })
     }
   }
 
 }
 </script>
+
+<style scoped>
+  .nav-item {
+    margin: 15px;
+  }
+</style>

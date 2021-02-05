@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import users from './connection/users'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,27 @@ const mutations = {
     state.usuario = {}
   }
 }
+
+const actions = {
+  efetuarLogin ({ commit }, usuario) {
+    return new Promise( (resolve, reject) => {
+      users.post('auth/login', usuario)
+        .then(response => {
+          commit('DEFINIR_USUARIO_LOGADO', {
+            token: response.data.access_token,
+            usuario: response.data.user
+          })
+          resolve(response.data)
+        })
+        .catch( err => {
+          console.log(err)
+          reject(err)
+        })
+    })
+  }
+}
 export default new Vuex.Store({
   state: estado,
-  mutations
+  mutations,
+  actions
 })

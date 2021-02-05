@@ -1,27 +1,18 @@
 <template>
-<div>
+  <div>
 
-<nav class="navbar navbar-expand-lg navbar-bytebank">
+    <nav class="navbar navbar-expand-lg navbar-bytebank">
 
-    <a class="navbar-brand" href="#">ByteBank</a>
+      <a class="navbar-brand" href="#">ByteBank</a>
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <button ></button>
         <MenuLogado v-if="usuarioEstaLogado"/>
         <MenuDesogado v-else/>
-
       </div>
-</nav>
-<h2> usuario ta logado? {{ usuarioEstaLogado }} </h2>
-  <!-- <nav>
-    <ul>
-      <li v-for="rota in rotas">
-        <router-link :to="rota.path ? rota.path : '/' ">
-          {{ rota.titulo }}
-        </router-link>
-      </li>
-    </ul>
-  </nav> -->
-</div>
+
+    </nav>
+
+  </div>
 
 </template>
 
@@ -37,7 +28,7 @@ export default {
   computed: {
     usuarioEstaLogado () {
 
-      return Boolean(sessionStorage.getItem('token'))
+      return Boolean(this.$store.state.token)
     }
   },
 
