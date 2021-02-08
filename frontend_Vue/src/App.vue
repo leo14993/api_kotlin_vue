@@ -2,8 +2,10 @@
 
   <div class="corpo">
 
-    <meu-menu :rotas="routes"/>
 
+    <!-- <meu-menu :rotas="routes"/> -->
+    <Menu/>
+    
     <transition name="pagina">
       <router-view></router-view>
     </transition>
@@ -17,14 +19,16 @@ import Menu from './components/shared/menu/Menu.vue';
 
 export default {
   components: {
-    'meu-menu' : Menu
+    Menu
   },
 
   data() {
     return {
       routes: routes.filter(route => route.menu)
     }
-  }
+  },
+
+
 
 }
 
@@ -44,5 +48,7 @@ export default {
   .pagina-enter-active, .paginae-leave-active{
     transition: opacity .5s ;
   }
+
+
 
 </style>

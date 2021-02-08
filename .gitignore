@@ -1,4 +1,5 @@
+.idea
 api/node_modules
 api/data.db
 frontend_Vue/node_modules
-.idea
+fake-rest-api-master/node_modules
